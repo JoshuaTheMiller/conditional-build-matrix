@@ -1,4 +1,5 @@
-name: 'MatrixFilter'
+name: 'Conditional Build Matrix'
+author: "JoshuaTheMiller"
 description: 'Provides an easier way to filter matrix elements!'
 inputs:
   inputFile:
@@ -14,3 +15,6 @@ outputs:
 runs:
   using: 'node12'
   main: 'dist/index.js'
+branding:
+  icon: 'filter'
+  color: 'blue'

@@ -1,6 +1,19 @@
-# Filter Matrix
+# Conditional Build Matrix
 
 Enables easier *conditional* matrix builds!
+
+❗ The *filter* input of this Action uses [JMESPath](https://jmespath.org/) as its JSON query language. To experiment with creating a JMESPath query, check out their [interactive examples page](https://jmespath.org/examples.html)!
+
+*Quick Links*
+
+* [Usage](#Usage)
+  * [Filtering on Branch Name](#Filtering-on-Branch-Name)
+* [Tips](#Tips)
+  * [Necessary JSON File](#Necessary-JSON-File)
+  * [JSON File Placement](#JSON-File-Placement)
+* [Troubleshooting](#Troubleshooting)
+* [Use Case](#Use-Case)
+* [Inspired By](#Inspired-By)
 
 ## Usage
 
@@ -54,6 +67,7 @@ jobs:
       - id: set-matrixIncludes
         uses: JoshuaTheMiller/conditional-matrix        
         with:          
+          # The simple branch name can be used in the filter now!
           filter: '[?runOnBranch==`${{ env.BRANCH_NAME }}` || runOnBranch==`always`]'   
   build:
     needs: matrix_prep
@@ -93,3 +107,20 @@ The following is the sample file (`matrix_includes.json`) that was used in the w
 ### JSON File Placement
 
 For a cleaner repository, I recommend placing the `matrix_includes.json` file in your `.github/workflows/` folder. Doing so will also help communicate the purpose of the file. Following this advice would require one to set the `inputFile` input value so that this Action knows where the JSON file is.
+
+## Troubleshooting
+
+This Action requires an output to be passed between jobs. For this Action to run properly, make sure you have defined the output of the `matrix_prep` job appropriately (or whatever you have named it), and that the other jobs have their `needs` block configured to point to the `matrix_prep` job (if they need to use the custom matrix).
+
+## Use Case 
+
+If you have two workflows where the only difference is the matrix elements, you may want to consider using a single workflow file with *conditional* matrix elements (which this Action makes easier):
+
+*Build for main branch*
+![Build for main branch](https://i.stack.imgur.com/O95fj.png)
+*Build for v2.1-Release branch*
+![](https://i.stack.imgur.com/bXFfX.png)
+
+## Inspired By
+
+This action was inspired by a [SO question](https://stackoverflow.com/q/65384420/1542187) on making matrix elements conditional. Thanks [lewis](https://stackoverflow.com/users/6814658/lewis) 😁.

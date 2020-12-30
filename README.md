@@ -18,7 +18,7 @@ Enables easier *conditional* matrix builds!
 ## Usage
 
 ```yml
-name: Conditional Matrix Build
+name: Sample Conditional Matrix Build
 
 on: push
 
@@ -26,11 +26,11 @@ jobs:
   matrix_prep:
     runs-on: ubuntu-latest
     outputs:
-      matrixIncludes: ${{ steps.set-matrixIncludes.outputs.matrixIncludes }}
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       # Required as the JSON input file needs to be read
       - uses: actions/checkout@v2      
-      - id: set-matrixIncludes
+      - id: set-matrix
         uses: JoshuaTheMiller/conditional-matrix        
         with:
           # inputFile: 'matrix_includes.json' # Default input file path
@@ -38,7 +38,7 @@ jobs:
   build:
     needs: matrix_prep
     strategy:      
-      matrix: ${{fromJson(needs.matrix_prep.outputs.matrixIncludes)}}
+      matrix: ${{fromJson(needs.matrix_prep.outputs.matrix)}}
     name: Build
     runs-on: ${{ matrix.runs_on }}
     steps:
@@ -52,7 +52,7 @@ jobs:
 The following workflow sample uses the `nelonoel/branch-name` Action so that the branch name itself can be used in the filter:
 
 ```yml
-name: Conditional Matrix Build
+name: Sample Conditional Matrix Build
 
 on: push
 
@@ -60,11 +60,11 @@ jobs:
   matrix_prep:
     runs-on: ubuntu-latest
     outputs:
-      matrixIncludes: ${{ steps.set-matrixIncludes.outputs.matrixIncludes }}
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - uses: actions/checkout@v2
       - uses: nelonoel/branch-name@v1.0.1
-      - id: set-matrixIncludes
+      - id: set-matrix
         uses: JoshuaTheMiller/conditional-matrix        
         with:          
           # The simple branch name can be used in the filter now!
@@ -72,7 +72,7 @@ jobs:
   build:
     needs: matrix_prep
     strategy:      
-      matrix: ${{fromJson(needs.matrix_prep.outputs.matrixIncludes)}}
+      matrix: ${{fromJson(needs.matrix_prep.outputs.matrix)}}
     name: Build
     runs-on: ${{ matrix.runs_on }}
     steps:

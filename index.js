@@ -15,7 +15,7 @@ try {
     const filteredIncludesAsString = JSON.stringify(filteredIncludes);
 
     const outputString = `{"include":${filteredIncludesAsString}}`
-    core.setOutput("matrixIncludes", outputString);
+    core.setOutput("matrix", outputString);
 } catch (error) {
     core.setFailed(error.message);
 }

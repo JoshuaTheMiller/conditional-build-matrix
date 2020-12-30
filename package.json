@@ -4,7 +4,8 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publish": "npm install && ncc build index.js --license LICENSE"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,7 @@
   },
   "homepage": "https://github.com/JoshuaTheMiller/matrixfilter-action#readme",
   "dependencies": {
-    "@actions/core": "^1.2.6",    
+    "@actions/core": "^1.2.6",
     "jmespath": "^0.15.0"
   },
   "devDependencies": {

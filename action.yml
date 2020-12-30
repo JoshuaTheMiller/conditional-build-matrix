@@ -10,7 +10,7 @@ inputs:
     description: 'The JMESPATH JSON query to apply to the input file.'
     required: true
 outputs:
-  matrixIncludes:
+  matrix:
     description: 'The filtered "strategy.matrix" statement created from filtering the "inputFile".'
 runs:
   using: 'node12'

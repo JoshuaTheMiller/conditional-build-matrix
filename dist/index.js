@@ -2,11 +2,11 @@ module.exports =
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 571:
+/***/ 932:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-const core = __webpack_require__(427);
-const jmes = __webpack_require__(251)
+const core = __webpack_require__(186);
+const jmes = __webpack_require__(783)
 const fs = __webpack_require__(747)
 
 try {
@@ -22,14 +22,14 @@ try {
     const filteredIncludesAsString = JSON.stringify(filteredIncludes);
 
     const outputString = `{"include":${filteredIncludesAsString}}`
-    core.setOutput("matrixIncludes", outputString);
+    core.setOutput("matrix", outputString);
 } catch (error) {
     core.setFailed(error.message);
 }
 
 /***/ }),
 
-/***/ 970:
+/***/ 351:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -43,7 +43,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const os = __importStar(__webpack_require__(87));
-const utils_1 = __webpack_require__(335);
+const utils_1 = __webpack_require__(278);
 /**
  * Commands
  *
@@ -115,7 +115,7 @@ function escapeProperty(s) {
 
 /***/ }),
 
-/***/ 427:
+/***/ 186:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -137,9 +137,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const command_1 = __webpack_require__(970);
-const file_command_1 = __webpack_require__(291);
-const utils_1 = __webpack_require__(335);
+const command_1 = __webpack_require__(351);
+const file_command_1 = __webpack_require__(717);
+const utils_1 = __webpack_require__(278);
 const os = __importStar(__webpack_require__(87));
 const path = __importStar(__webpack_require__(622));
 /**
@@ -360,7 +360,7 @@ exports.getState = getState;
 
 /***/ }),
 
-/***/ 291:
+/***/ 717:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -378,7 +378,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const fs = __importStar(__webpack_require__(747));
 const os = __importStar(__webpack_require__(87));
-const utils_1 = __webpack_require__(335);
+const utils_1 = __webpack_require__(278);
 function issueCommand(command, message) {
     const filePath = process.env[`GITHUB_${command}`];
     if (!filePath) {
@@ -396,7 +396,7 @@ exports.issueCommand = issueCommand;
 
 /***/ }),
 
-/***/ 335:
+/***/ 278:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -422,7 +422,7 @@ exports.toCommandValue = toCommandValue;
 
 /***/ }),
 
-/***/ 251:
+/***/ 783:
 /***/ ((__unused_webpack_module, exports) => {
 
 (function(exports) {
@@ -2158,6 +2158,6 @@ module.exports = require("path");;
 /******/ 	// module exports must be returned from runtime so entry inlining is disabled
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(571);
+/******/ 	return __webpack_require__(932);
 /******/ })()
 ;

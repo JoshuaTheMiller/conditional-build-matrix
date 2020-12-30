@@ -5,6 +5,6 @@
     },
     {
         "runs_on":"windows-latest",        
-        "runOn":"main"
+        "runOn":"refs/heads/main"
     }
 ]

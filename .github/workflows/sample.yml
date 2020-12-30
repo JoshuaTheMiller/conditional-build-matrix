@@ -9,13 +9,12 @@ jobs:
     outputs:
       matrixIncludes: ${{ steps.set-matrixIncludes.outputs.matrixIncludes }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: nelonoel/branch-name@v1.0.1
+      - uses: actions/checkout@v2      
       - id: set-matrixIncludes
         uses: ./ # Uses an action in the root directory        
         with:
-          inputFile: '.github/workflows/sample_matrix_includes.json'
-          filter: '[?runOn==`${{ env.BRANCH_NAME }}` || runOn==`always`]'   
+          # inputFile: 'matrix_includes.json' # Default input file path
+          filter: '[?runOn==`${{ github.ref }}` || runOn==`always`]'   
   build:
     needs: matrix_prep
     strategy:      

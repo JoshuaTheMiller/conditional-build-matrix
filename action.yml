@@ -4,6 +4,7 @@ inputs:
   inputFile:
     description: 'The file that contains the JSON configuration of the matrix includes elements. Must come after a Checkout.'
     required: true
+    default: 'matrix_includes.json'
   filter: 
     description: 'The JMESPATH JSON query to apply to the input file.'
     required: true

@@ -1,0 +1,27 @@
+name: Sample
+
+on:
+  workflow_dispatch:
+
+jobs:
+  matrix_prep:
+    runs-on: ubuntu-latest
+    outputs:
+      matrixIncludes: ${{ steps.set-matrixIncludes.outputs.matrixIncludes }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: nelonoel/branch-name@v1.0.1
+      - id: set-matrixIncludes
+        uses: ./ # Uses an action in the root directory        
+        with:
+          inputFile: '.github/workflows/sample_matrix_includes.json'
+          filter: '[?runOn==`${{ env.BRANCH_NAME }}` || runOn==`always`]'   
+  build:
+    needs: matrix_prep
+    strategy:      
+      matrix: ${{fromJson(needs.matrix_prep.outputs.matrixIncludes)}}
+    name: Build
+    runs-on: ${{ matrix.runs_on }}
+    steps:
+    - name: Echo
+      run: echo "${{ matrix.runOn }}"

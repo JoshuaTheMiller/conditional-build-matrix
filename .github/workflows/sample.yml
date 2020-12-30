@@ -13,7 +13,7 @@ jobs:
       - id: set-matrix
         uses: ./ # Uses an action in the root directory        
         with:
-          # inputFile: 'matrix_includes.json' # Default input file path
+          inputFile: '.github/workflows/matrix_includes.json' # Defaults to 'matrix_includes.json'
           filter: '[?runOn==`${{ github.ref }}` || runOn==`always`]'   
   build:
     needs: matrix_prep

@@ -31,9 +31,9 @@ jobs:
       # Required as the JSON input file needs to be read
       - uses: actions/checkout@v2      
       - id: set-matrix
-        uses: JoshuaTheMiller/conditional-matrix        
+        uses: JoshuaTheMiller/conditional-build-matrix        
         with:
-          # inputFile: 'matrix_includes.json' # Default input file path
+          # inputFile: '.github/workflows/matrix_includes.json' # Default input file path
           filter: '[?runOnBranch==`${{ github.ref }}` || runOnBranch==`always`]'   
   build:
     needs: matrix_prep
@@ -65,7 +65,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: nelonoel/branch-name@v1.0.1
       - id: set-matrix
-        uses: JoshuaTheMiller/conditional-matrix        
+        uses: JoshuaTheMiller/conditional-build-matrix        
         with:          
           # The simple branch name can be used in the filter now!
           filter: '[?runOnBranch==`${{ env.BRANCH_NAME }}` || runOnBranch==`always`]'   
@@ -85,7 +85,7 @@ jobs:
 
 ### Necessary JSON File
 
-This Action requires a JSON file that contains the information you would normally include in a `strategy.matrix.includes` block (example is [included below](#sample-json-file)). By default, the action will look for a top level file named `matrix_includes.json`. If you want to name the file differently, or place it in a different folder, set the path via the `inputFile` input.
+This Action requires a JSON file that contains the information you would normally include in a `strategy.matrix.includes` block (example is [included below](#sample-json-file)). By default, the action will look for file in your `.github/workflows/` folder named `matrix_includes.json`. If you want to name the file differently, or place it in a different folder, set the path via the `inputFile` input.
 
 #### Sample JSON File
 
@@ -106,7 +106,7 @@ The following is the sample file (`matrix_includes.json`) that was used in the w
 
 ### JSON File Placement
 
-For a cleaner repository, I recommend placing the `matrix_includes.json` file in your `.github/workflows/` folder. Doing so will also help communicate the purpose of the file. Following this advice would require one to set the `inputFile` input value so that this Action knows where the JSON file is.
+For a cleaner repository, I recommend placing the `matrix_includes.json` file in your `.github/workflows/` folder. Doing so will also help communicate the purpose of the file. You do not have to follow this advice, of course, as this Action allows the location of the file to be passed via the `inputFile` input.
 
 ## Troubleshooting
 

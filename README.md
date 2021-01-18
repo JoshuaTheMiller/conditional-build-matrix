@@ -22,6 +22,19 @@ Enables easier *conditional* matrix builds!
 
 ## Usage
 
+Inputs and Outputs are as follows:
+
+| Input | Default Value | Description |
+| - | - | - |
+| `inputFile` | `.github/workflows/matrix_includes.json` | The file that contains the JSON configuration of the matrix includes elements. Must come after a Checkout. |
+| `filter` | ❗ none, user must supply value! | The [JMESPATH JSON](https://jmespath.org/examples.html) query to apply to the input file. |
+
+| Output | Description |
+| - | - |
+| `matrix` | The filtered "strategy.matrix" statement created from filtering the "inputFile". |
+
+### Sample
+
 ```yml
 name: Sample Conditional Matrix Build
 

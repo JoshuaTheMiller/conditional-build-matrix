@@ -1,6 +1,11 @@
 # Conditional Build Matrix
 
+[![CodeFactor](https://www.codefactor.io/repository/github/joshuathemiller/conditional-build-matrix/badge)](https://www.codefactor.io/repository/github/joshuathemiller/conditional-build-matrix) ![GitHub](https://img.shields.io/github/license/JoshuaTheMiller/conditional-build-matrix)
+
 Enables easier *conditional* matrix builds!
+
+---
+
 
 ❗ The *filter* input of this Action uses [JMESPath](https://jmespath.org/) as its JSON query language. To experiment with creating a JMESPath query, check out their [interactive examples page](https://jmespath.org/examples.html)!
 

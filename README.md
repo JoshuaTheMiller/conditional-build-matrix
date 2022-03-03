@@ -49,7 +49,7 @@ jobs:
       # Required as the JSON input file needs to be read
       - uses: actions/checkout@v2      
       - id: set-matrix
-        uses: JoshuaTheMiller/conditional-build-matrix        
+        uses: JoshuaTheMiller/conditional-build-matrix@main        
         with:
           # inputFile: '.github/workflows/matrix_includes.json' # Default input file path
           filter: '[?runOnBranch==`${{ github.ref }}` || runOnBranch==`always`]'   
@@ -83,7 +83,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: nelonoel/branch-name@v1.0.1
       - id: set-matrix
-        uses: JoshuaTheMiller/conditional-build-matrix        
+        uses: JoshuaTheMiller/conditional-build-matrix@main        
         with:          
           # The simple branch name can be used in the filter now!
           filter: '[?runOnBranch==`${{ env.BRANCH_NAME }}` || runOnBranch==`always`]'   

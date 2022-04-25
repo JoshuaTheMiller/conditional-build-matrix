@@ -3,12 +3,16 @@ author: "JoshuaTheMiller"
 description: 'Provides an easier way to filter matrix elements!'
 inputs:
   inputFile:
-    description: 'The file that contains the JSON configuration of the matrix includes elements. Must come after a Checkout.'
+    description: 'The file that contains the JSON configuration of the matrix elements. Must come after a Checkout.'
     required: true
     default: '.github/workflows/matrix_includes.json'
   filter: 
-    description: 'The JMESPATH JSON query to apply to the input file.'
+    description: 'The JMESPath JSON query to apply to the input file.'
     required: true
+  addInclude:
+    description: 'Wrap the output from the JSON query in an "{include: ...}" object.'
+    required: true
+    default: true
 outputs:
   matrix:
     description: 'The filtered "strategy.matrix" statement created from filtering the "inputFile".'

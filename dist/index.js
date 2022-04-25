@@ -10,18 +10,18 @@ const jmes = __webpack_require__(783)
 const fs = __webpack_require__(747)
 
 try {
-    // `who-to-greet` input defined in action metadata file
     const inputFilePath = core.getInput('inputFile');
     const filterString = core.getInput('filter');
+    const addInclude = (core.getInput('addInclude') || 'true').toUpperCase() === 'TRUE';
 
     const inputFile = fs.readFileSync(inputFilePath);
 
     const inputJson = JSON.parse(inputFile);
 
-    const filteredIncludes = jmes.search(inputJson, filterString);
-    const filteredIncludesAsString = JSON.stringify(filteredIncludes);
+    const filteredJson = jmes.search(inputJson, filterString);
+    const filteredJsonAsString = JSON.stringify(filteredJson);
 
-    const outputString = `{"include":${filteredIncludesAsString}}`
+    const outputString = addInclude ? `{"include":${filteredJsonAsString}}`: filteredJsonAsString;
     core.setOutput("matrix", outputString);
 } catch (error) {
     core.setFailed(error.message);

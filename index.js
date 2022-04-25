@@ -14,7 +14,7 @@ try {
     const filteredJson = jmes.search(inputJson, filterString);
     const filteredJsonAsString = JSON.stringify(filteredJson);
 
-    const outputString = addInclude ? `{"include":${filteredJsonAsString}}`: filteredJsonAsString;
+    const outputString = addInclude ? `{"include":${filteredJsonAsString}}` : filteredJsonAsString;
     core.setOutput("matrix", outputString);
 } catch (error) {
     core.setFailed(error.message);

@@ -107,7 +107,7 @@ jobs:
 
 This Action requires a JSON file that contains the information you would normally include in a `strategy.matrix.include` block (example is [included below](#sample-json-file)). By default, the action will look for a file in your `.github/workflows/` folder named `matrix_includes.json`. If you want to name the file differently, or place it in a different folder, set the path via the `inputFile` input.
 
-If you need to define the entire `strategy.matrix` you'll need to set `addInclude` to `false` and then ensure your input file and JSON query provide the results your workflow needs.
+If you need to define the entire `strategy.matrix` value, you will need to set `addInclude` to `false`. Please note that you must then ensure your **input file** and **JSON query** provide the results your workflow needs.
 
 #### Sample JSON File
 

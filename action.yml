@@ -11,7 +11,7 @@ inputs:
     required: true
   addInclude:
     description: 'Wrap the output from the JSON query in an "{include: ...}" object.'
-    required: true
+    required: false
     default: true
 outputs:
   matrix:

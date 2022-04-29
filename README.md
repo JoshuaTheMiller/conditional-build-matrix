@@ -27,7 +27,8 @@ Inputs and Outputs are as follows:
 | Input | Default Value | Description |
 | - | - | - |
 | `inputFile` | `.github/workflows/matrix_includes.json` | The file that contains the JSON configuration of the matrix includes elements. Must come after a Checkout. |
-| `filter` | ❗ none, user must supply value! | The [JMESPATH JSON](https://jmespath.org/examples.html) query to apply to the input file. |
+| `filter` | ❗ none, user must supply value! | The [JMESPath JSON](https://jmespath.org/examples.html) query to apply to the input file. |
+| `addInclude` | true | Wrap the output from the JSON query in an `{include: ...}` object. |
 
 | Output | Description |
 | - | - |
@@ -52,7 +53,8 @@ jobs:
         uses: JoshuaTheMiller/conditional-build-matrix@main        
         with:
           # inputFile: '.github/workflows/matrix_includes.json' # Default input file path
-          filter: '[?runOnBranch==`${{ github.ref }}` || runOnBranch==`always`]'   
+          filter: '[?runOnBranch==`${{ github.ref }}` || runOnBranch==`always`]'
+          # addInclude: true
   build:
     needs: matrix_prep
     strategy:      
@@ -103,7 +105,9 @@ jobs:
 
 ### Necessary JSON File
 
-This Action requires a JSON file that contains the information you would normally include in a `strategy.matrix.includes` block (example is [included below](#sample-json-file)). By default, the action will look for file in your `.github/workflows/` folder named `matrix_includes.json`. If you want to name the file differently, or place it in a different folder, set the path via the `inputFile` input.
+This Action requires a JSON file that contains the information you would normally include in a `strategy.matrix.include` block (example is [included below](#sample-json-file)). By default, the action will look for a file in your `.github/workflows/` folder named `matrix_includes.json`. If you want to name the file differently, or place it in a different folder, set the path via the `inputFile` input.
+
+If you need to define the entire `strategy.matrix` value, you will need to set `addInclude` to `false`. Please note that you must then ensure your **input file** and **JSON query** provide the results your workflow needs.
 
 #### Sample JSON File
 

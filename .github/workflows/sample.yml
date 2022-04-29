@@ -14,7 +14,8 @@ jobs:
         uses: ./ # Uses an action in the root directory        
         with:
           inputFile: '.github/workflows/matrix_includes.json' # Defaults to 'matrix_includes.json'
-          filter: '[?runOn==`${{ github.ref }}` || runOn==`always`]'   
+          filter: '[?runOn==`${{ github.ref }}` || runOn==`always`]'
+          addInclude: true # Defaults to true
   build:
     needs: matrix_prep
     strategy:      

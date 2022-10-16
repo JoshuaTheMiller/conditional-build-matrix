@@ -20,7 +20,7 @@
   "homepage": "https://github.com/JoshuaTheMiller/matrixfilter-action#readme",
   "dependencies": {
     "@actions/core": "^1.10.0",
-    "jmespath": "^0.15.0"
+    "jmespath": "^0.16.0"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.34.0"

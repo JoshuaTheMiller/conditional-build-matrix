@@ -17,7 +17,7 @@ outputs:
   matrix:
     description: 'The filtered "strategy.matrix" statement created from filtering the "inputFile".'
 runs:
-  using: 'node16'
+  using: node16
   main: 'dist/index.js'
 branding:
   icon: 'filter'

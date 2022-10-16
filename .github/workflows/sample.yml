@@ -9,7 +9,7 @@ jobs:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-      - uses: actions/checkout@v2      
+      - uses: actions/checkout@v3.1.0      
       - id: set-matrix
         uses: ./ # Uses an action in the root directory        
         with:
